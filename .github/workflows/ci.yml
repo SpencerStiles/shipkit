@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    name: Type-check & Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate Prisma client
+        run: pnpm exec prisma generate
+
+      - name: Type-check
+        run: pnpm exec tsc --noEmit
+
+      - name: Build
+        run: pnpm build
+        env:
+          # Stub env vars — values must satisfy Zod validators in src/lib/env.ts
+          DATABASE_URL: postgresql://user:pass@localhost:5432/shipkit
+          NEXTAUTH_SECRET: ci-secret-stub-minimum-32-characters-long
+          NEXTAUTH_URL: http://localhost:3000
+          GITHUB_CLIENT_ID: stub
+          GITHUB_CLIENT_SECRET: stub
+          GOOGLE_CLIENT_ID: stub
+          GOOGLE_CLIENT_SECRET: stub
+          OPENAI_API_KEY: sk-stub000000000000000000000000000000000000000
+          STRIPE_SECRET_KEY: sk_test_stub
+          STRIPE_WEBHOOK_SECRET: whsec_stub
+          STRIPE_PRO_PRICE_ID: price_stub
+          STRIPE_ENTERPRISE_PRICE_ID: price_stub

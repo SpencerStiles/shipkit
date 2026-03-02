@@ -32,4 +32,10 @@ export type Env = z.infer<typeof schema>;
 // Parse once — throws with a descriptive ZodError if any variable is missing
 // or malformed. The error surfaces immediately at module load time, before any
 // request is served.
-export const env: Env = schema.parse(process.env);
+//
+// Set SKIP_ENV_VALIDATION=true to bypass validation (e.g. `next build` locally
+// without real secrets). Never set this in production.
+export const env: Env =
+  process.env.SKIP_ENV_VALIDATION === 'true'
+    ? ({} as Env)
+    : schema.parse(process.env);

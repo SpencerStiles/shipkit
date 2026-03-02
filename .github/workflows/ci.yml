@@ -30,6 +30,12 @@ jobs:
       - name: Type-check
         run: pnpm exec tsc --noEmit
 
+      - name: Test
+        run: pnpm test
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test
+          NODE_ENV: test
+
       - name: Build
         run: pnpm build
         env:

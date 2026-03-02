@@ -4,7 +4,7 @@
 
 ShipKit is a production-ready Next.js 14 starter with everything you need to launch: auth, Stripe billing, AI proxy with token metering, API key management, and a beautiful dashboard — all wired up and working.
 
-[**Get ShipKit →**](https://cal.com/spencerstiles) | [Live Demo](https://shipkit.spencerstiles.dev)
+[**Get ShipKit →**](https://cal.com/spencerstiles) | [Live Demo](https://shipkit.spencerstiles.com)
 
 ---
 

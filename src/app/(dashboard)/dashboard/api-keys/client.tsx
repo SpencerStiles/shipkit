@@ -73,14 +73,14 @@ export default function ApiKeysClient({ initialKeys }: Props) {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">API Keys</h1>
-          <p className="mt-1 text-sm text-gray-500">
+          <h1 className="text-2xl font-bold text-[#fafafa]">API Keys</h1>
+          <p className="mt-1 text-sm text-[#71717a]">
             Manage API keys for programmatic access to AI endpoints.
           </p>
         </div>
         <button
           onClick={() => setShowCreate(!showCreate)}
-          className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700 transition-colors"
+          className="rounded-md bg-[#22d3ee] px-4 py-2 text-sm font-semibold text-[#09090b] hover:bg-[#67e8f9] transition-colors"
         >
           Create Key
         </button>
@@ -88,16 +88,16 @@ export default function ApiKeysClient({ initialKeys }: Props) {
 
       {/* Revealed key banner — shown once after creation */}
       {revealedKey && (
-        <div className="rounded-lg border border-green-200 bg-green-50 p-4 space-y-2">
-          <p className="text-sm font-medium text-green-800">
+        <div className="rounded-md border border-[#14532d] bg-[#052e16] p-4 space-y-2">
+          <p className="text-sm font-medium text-[#86efac]">
             Key created — copy it now, it will not be shown again.
           </p>
-          <code className="block break-all rounded bg-green-100 px-3 py-2 text-sm text-green-900 font-mono">
+          <code className="block break-all rounded-md bg-[#09090b] border border-[#2d2d35] px-3 py-2 text-sm text-[#22d3ee] font-mono">
             {revealedKey}
           </code>
           <button
             onClick={() => setRevealedKey(null)}
-            className="text-xs text-green-700 underline"
+            className="text-xs text-[#4ade80] underline hover:text-[#86efac] transition-colors"
           >
             Dismiss
           </button>
@@ -106,16 +106,16 @@ export default function ApiKeysClient({ initialKeys }: Props) {
 
       {/* Error banner */}
       {error && (
-        <div className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+        <div className="rounded-md border border-[#7f1d1d] bg-[#1c0a0a] p-3 text-sm text-[#fca5a5]">
           {error}
         </div>
       )}
 
       {/* Create form */}
       {showCreate && (
-        <div className="rounded-lg border bg-white p-4 space-y-3">
+        <div className="rounded-md border border-[#2d2d35] bg-[#111114] p-4 space-y-3">
           <div>
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm font-medium text-[#a1a1aa]">
               Key Name
             </label>
             <input
@@ -123,20 +123,20 @@ export default function ApiKeysClient({ initialKeys }: Props) {
               value={newKeyName}
               onChange={(e) => setNewKeyName(e.target.value)}
               placeholder="e.g., Production API"
-              className="mt-1 block w-full rounded-lg border px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500"
+              className="mt-1 block w-full rounded-md border border-[#2d2d35] bg-[#1e1e24] px-3 py-2 text-sm text-[#fafafa] placeholder-[#52525b] focus:border-[#22d3ee] focus:outline-none focus:ring-1 focus:ring-[#22d3ee] transition-colors"
             />
           </div>
           <div className="flex gap-2">
             <button
               onClick={handleCreate}
               disabled={creating || !newKeyName.trim()}
-              className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700 disabled:opacity-50"
+              className="rounded-md bg-[#22d3ee] px-4 py-2 text-sm font-semibold text-[#09090b] hover:bg-[#67e8f9] disabled:opacity-50 transition-colors"
             >
-              {creating ? 'Generating…' : 'Generate'}
+              {creating ? 'Generating\u2026' : 'Generate'}
             </button>
             <button
               onClick={() => { setShowCreate(false); setError(null); }}
-              className="rounded-lg border px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+              className="rounded-md border border-[#2d2d35] px-4 py-2 text-sm font-medium text-[#a1a1aa] hover:text-[#fafafa] hover:border-[#52525b] transition-colors"
             >
               Cancel
             </button>
@@ -145,15 +145,15 @@ export default function ApiKeysClient({ initialKeys }: Props) {
       )}
 
       {/* Keys list */}
-      <div className="rounded-lg border bg-white">
+      <div className="rounded-md border border-[#2d2d35] bg-[#111114]">
         {keys.length === 0 ? (
-          <div className="p-8 text-center text-sm text-gray-500">
+          <div className="p-8 text-center text-sm text-[#71717a]">
             No API keys yet. Create one to get started.
           </div>
         ) : (
           <table className="w-full">
             <thead>
-              <tr className="border-b text-left text-sm font-medium text-gray-500">
+              <tr className="border-b border-[#2d2d35] text-left text-xs font-medium text-[#71717a]">
                 <th className="p-4">Name</th>
                 <th className="p-4">Key</th>
                 <th className="p-4">Created</th>
@@ -163,19 +163,19 @@ export default function ApiKeysClient({ initialKeys }: Props) {
             </thead>
             <tbody>
               {keys.map((key) => (
-                <tr key={key.id} className="border-b last:border-0 text-sm">
-                  <td className="p-4 font-medium text-gray-900">{key.name}</td>
+                <tr key={key.id} className="border-b border-[#2d2d35] last:border-0 text-sm">
+                  <td className="p-4 font-medium text-[#fafafa]">{key.name}</td>
                   <td className="p-4">
-                    <code className="rounded bg-gray-100 px-2 py-0.5 text-xs text-gray-600">
-                      {key.prefix}…
+                    <code className="rounded-md bg-[#1e1e24] border border-[#2d2d35] px-2 py-0.5 text-xs text-[#a1a1aa] font-mono">
+                      {key.prefix}&hellip;
                     </code>
                   </td>
-                  <td className="p-4 text-gray-600">{key.createdAt}</td>
-                  <td className="p-4 text-gray-600">{key.lastUsed ?? 'Never'}</td>
+                  <td className="p-4 text-[#a1a1aa]">{key.createdAt}</td>
+                  <td className="p-4 text-[#a1a1aa]">{key.lastUsed ?? 'Never'}</td>
                   <td className="p-4 text-right">
                     <button
                       onClick={() => handleRevoke(key.id)}
-                      className="text-sm text-red-600 hover:text-red-700"
+                      className="text-sm text-[#ef4444] hover:text-[#f87171] transition-colors"
                     >
                       Revoke
                     </button>

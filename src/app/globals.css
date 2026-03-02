@@ -3,7 +3,27 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --bg: #09090b;
+    --surface: #111114;
+    --elevated: #1e1e24;
+    --border: #2d2d35;
+    --text: #fafafa;
+    --muted: #a1a1aa;
+    --subtle: #71717a;
+    --accent: #22d3ee;
+    --accent-dim: rgba(34, 211, 238, 0.15);
+  }
+
+  * { border-color: var(--border); }
+
   body {
-    @apply bg-gray-50 text-gray-900 antialiased;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-syne), system-ui, sans-serif;
+  }
+
+  .font-mono, code, pre {
+    font-family: var(--font-mono), monospace;
   }
 }

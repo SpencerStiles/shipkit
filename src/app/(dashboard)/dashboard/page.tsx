@@ -54,26 +54,26 @@ export default async function DashboardPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-        <p className="mt-1 text-sm text-gray-500">
+        <h1 className="text-2xl font-bold text-[#fafafa]">Dashboard</h1>
+        <p className="mt-1 text-sm text-[#71717a]">
           Overview of your AI usage and billing for the current period.
         </p>
       </div>
 
       {/* Plan badge */}
-      <div className="rounded-lg border bg-white p-4 flex items-center justify-between">
+      <div className="rounded-md border border-[#2d2d35] bg-[#111114] p-4 flex items-center justify-between">
         <div>
-          <p className="text-sm font-medium text-gray-500">Current Plan</p>
-          <p className="text-lg font-semibold text-brand-700">{planLabel}</p>
+          <p className="text-sm font-medium text-[#a1a1aa]">Current Plan</p>
+          <p className="text-lg font-semibold text-[#22d3ee]">{planLabel}</p>
         </div>
         <div className="text-right">
-          <p className="text-sm text-gray-500">Token Budget</p>
-          <p className="text-sm font-medium">
+          <p className="text-sm text-[#a1a1aa]">Token Budget</p>
+          <p className="text-sm font-medium text-[#fafafa]">
             {tokensUsed.toLocaleString()} / {tokenLimit.toLocaleString()}
           </p>
-          <div className="mt-1 h-2 w-40 rounded-full bg-gray-100">
+          <div className="mt-1 h-2 w-40 rounded-full bg-[#1e1e24]">
             <div
-              className="h-2 rounded-full bg-brand-500"
+              className="h-2 rounded-full bg-[#22d3ee]"
               style={{ width: `${usagePct}%` }}
             />
           </div>
@@ -82,39 +82,39 @@ export default async function DashboardPage() {
 
       {/* Stats grid */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div className="rounded-lg border bg-white p-4">
-          <p className="text-sm font-medium text-gray-500">Total API Keys</p>
-          <p className="mt-1 text-2xl font-semibold text-gray-900">
+        <div className="rounded-md border border-[#2d2d35] bg-[#111114] p-4">
+          <p className="text-sm font-medium text-[#a1a1aa]">Total API Keys</p>
+          <p className="mt-1 text-2xl font-semibold text-[#fafafa]">
             {totalKeys.toLocaleString()}
           </p>
         </div>
-        <div className="rounded-lg border bg-white p-4">
-          <p className="text-sm font-medium text-gray-500">Active API Keys</p>
-          <p className="mt-1 text-2xl font-semibold text-gray-900">
+        <div className="rounded-md border border-[#2d2d35] bg-[#111114] p-4">
+          <p className="text-sm font-medium text-[#a1a1aa]">Active API Keys</p>
+          <p className="mt-1 text-2xl font-semibold text-[#fafafa]">
             {activeKeys.toLocaleString()}
           </p>
         </div>
-        <div className="rounded-lg border bg-white p-4">
-          <p className="text-sm font-medium text-gray-500">Usage Records</p>
-          <p className="mt-1 text-2xl font-semibold text-gray-900">
+        <div className="rounded-md border border-[#2d2d35] bg-[#111114] p-4">
+          <p className="text-sm font-medium text-[#a1a1aa]">Usage Records</p>
+          <p className="mt-1 text-2xl font-semibold text-[#fafafa]">
             {usageRecordCount.toLocaleString()}
           </p>
         </div>
-        <div className="rounded-lg border bg-white p-4">
-          <p className="text-sm font-medium text-gray-500">Total Tokens Used</p>
-          <p className="mt-1 text-2xl font-semibold text-gray-900">
+        <div className="rounded-md border border-[#2d2d35] bg-[#111114] p-4">
+          <p className="text-sm font-medium text-[#a1a1aa]">Total Tokens Used</p>
+          <p className="mt-1 text-2xl font-semibold text-[#fafafa]">
             {totalTokensAllTime.toLocaleString()}
           </p>
         </div>
       </div>
 
       {/* Quick start */}
-      <div className="rounded-lg border bg-white p-6">
-        <h2 className="text-lg font-semibold text-gray-900">Quick Start</h2>
-        <p className="mt-1 text-sm text-gray-500">
+      <div className="rounded-md border border-[#2d2d35] bg-[#111114] p-6">
+        <h2 className="text-lg font-semibold text-[#fafafa]">Quick Start</h2>
+        <p className="mt-1 text-sm text-[#71717a]">
           Make your first API call in seconds.
         </p>
-        <pre className="mt-4 overflow-x-auto rounded-lg bg-gray-900 p-4 text-sm text-gray-100">
+        <pre className="mt-4 overflow-x-auto rounded-md bg-[#09090b] border border-[#2d2d35] p-4 text-sm text-[#a1a1aa] font-mono">
 {`curl -X POST https://your-app.com/api/ai/chat \\
   -H "Authorization: Bearer sk_your_api_key" \\
   -H "Content-Type: application/json" \\

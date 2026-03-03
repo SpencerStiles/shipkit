@@ -1,8 +1,8 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 
 // Set required env before any imports that trigger validation
-process.env.DATABASE_URL = 'postgresql://test@localhost:5432/test'
-process.env.NODE_ENV = 'test'
+vi.stubEnv('DATABASE_URL', 'postgresql://test@localhost:5432/test')
+vi.stubEnv('NODE_ENV', 'test')
 
 describe('logger', () => {
   it('creates a logger with expected methods', async () => {
